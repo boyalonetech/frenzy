@@ -1,0 +1,691 @@
+/* Errm This Is MrDee I Actuall Started Without You Guys */
+/* Changing The Body Background Color */
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #ecebeb;
+  --bg: #000;
+  --color: #fff;
+  --bg1-color: #d7d7d7;
+  --bg2-color2: rgb(0, 102, 0);
+  --secondary-color: white;
+  --btn : rgb(255, 153, 0);
+  --btn2: lime;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25rem;
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  z-index: 1000;
+  justify-content: space-evenly;
+  background: var(--color);
+  padding: 0 50px;
+  border-bottom: 1px solid var(--bg);
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input {
+  width: 220px;
+  height: 35px;
+  padding: 10px;
+  outline: none;
+  background: var(--bg-color);
+  border: none;
+  padding-right: 40px;
+  border-radius: 20px;
+}
+
+.search-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  display: flex;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-icons {
+  display: flex;
+  color: var(--bg);
+  gap: 1rem;
+  margin-left: -15px;
+}
+
+.nav-icons svg {
+  display: flex;
+  position: relative;
+  font-size: 80px;
+  color: var(--bg);
+  gap: 1rem;
+}
+
+svg {
+  color: var(--bg);
+}
+
+.logo {
+  font-size: 2em;
+  position: relative;
+}
+
+/* carousel */
+.carousel-inner img {
+  width: 100%;
+  margin-top: 4.5%;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+/* HAm Menu */
+.off-screen-menu {
+  background: var(--color);
+  position: fixed;
+  top: 0;
+  left: -450px;
+  width: 100%;
+  max-width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
+  color: white;
+  z-index: 900;
+  border-right: 1px solid var(--bg);
+  overflow-y: scroll;
+}
+
+.off-screen-menu.active {
+  left: 0;
+}
+
+.off-screen-menu li {
+  list-style: none;
+}
+
+.main2 {
+  margin-top: 60%;
+  margin-right: auto;
+  padding-left: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.main3 {
+  margin-top: 15%;
+  margin-right: auto;
+  padding-left: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.main3 svg {
+  scale: 0.8;
+}
+
+.main2 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main2 li {
+  align-items: center;
+}
+
+.main3 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main3 li {
+  align-items: center;
+}
+
+.main4 {
+  margin-top: 15%;
+  margin-right: auto;
+  padding-left: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.main4 svg {
+  scale: 0.8;
+}
+
+.main4 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main4 li {
+  align-items: center;
+}
+
+.main4 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main4 li {
+  align-items: center;
+}
+
+/* scroll */
+.off-screen-menu::-webkit-scrollbar {
+  /* height: 2px; */
+  width: 5px;
+  color: var(--bg);
+}
+
+.off-screen-menu::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.258);
+  border-radius: 50px;
+}
+
+.off-screen-menu::-webkit-scrollbar-thumb {
+  background: #0000009c;
+  border-radius: 50px;
+}
+
+/* Home */
+
+#home {
+  margin-top: -36%;
+  padding: 10px;
+  z-index: 1000;
+  position: fixed;
+}
+
+#home .homebtn {
+  background: #ffffffdc;
+  border: none;
+  outline: none;
+  position: absolute;
+}
+
+#home2 {
+  margin-top: -36%;
+  padding: 8px;
+  display: none;
+  z-index: 1000;
+  position: fixed;
+}
+
+#home2 button {
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+}
+
+.svg {
+  color: var(--bg);
+}
+
+.add-home,
+.svg {
+  /* background-color: var(--bg); */
+  color: var(--color);
+}
+
+.slide-op {
+  z-index: 900;
+}
+
+/* ============================================  MR DEE ================================================ */
+
+/* 
+/* This Is MrDee Styles */
+
+/* Changing The Body Background Color */
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+.shop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.block {
+  width: 1rem;
+  height: 2.5rem;
+  background-color: var(--bg2-color2);
+}
+
+.shop-items {
+  margin-top: -1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: fit-content;
+  gap: 4rem;
+
+  padding: 1rem;
+  background-color: var(--secondary-color);
+}
+
+.detail div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-family: Josefin Sans;
+  margin-left: -3.8rem;
+  color: var(--bg2-color2);
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0%;
+  padding: 0%;
+  text-align: left;
+  font-family: Roboto;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.shop-head-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 3rem; */
+}
+
+.sort-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: -2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: Roboto;
+}
+
+select {
+  border: 1px solid orangered;
+  width: 9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: Roboto;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+}
+
+select:focus {
+  outline: none;
+}
+
+option {
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: Roboto;
+
+  background-color: var(--secondary-color);
+}
+
+.shop-cards {
+  gap: 2rem;
+  display: grid;
+  /* max-width: 1000px; */
+  grid-template-columns: repeat(3, 1fr);
+  /* box-shadow: 0 0px 10px solid var(--bg); */
+}
+
+.card {
+  width: 23rem;
+  height: 20rem;
+  background-color: rgb(248, 248, 248);
+  padding: 1rem;
+  margin-top: 0.7rem;
+  gap: 2rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid var(--bg);
+  box-shadow: 0 0px 10px var(--bg);
+}
+
+.card:hover {
+  box-shadow: 0 0px 10px var(--bg);
+  transition: 0.5s;
+  border: none;
+  transform: translateY(-2%) scale(1.04);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 20rem;
+  overflow: scroll;
+  max-width: 1200px;
+  /* margin-left: 10%; */
+  padding: 1rem;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.detail-tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+}
+.card .img-container {
+  overflow: hidden;
+  border-radius: 1rem;
+  aspect-ratio: 30/20;
+  border: 1px solid var(--bg);
+}
+
+.detail-tag h2 {
+  font-size: 1rem;
+}
+
+#top {
+  object-position: bottom;
+}
+
+.card select {
+  width: fit-content;
+  border-radius: 1rem;
+}
+
+.add-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.add-items .btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.btn button {
+  width: 2rem;
+  height: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  border: 1px solid orangered;
+  font-family: Roboto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: inherit;
+  text-align: center;
+}
+
+.btn button:hover {
+  transition: 0.5s;
+  color: white;
+  background-color: orangered;
+}
+
+/* ====================================MrDee Styles Ended Here So You All Suckers Know ========================*/
+
+.counter-container .increaseBtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: var(--btn);
+  border: 2px solid var(--btn);
+  color: var(--bg);
+  text-align: center;
+  font-size: 20px; /* Increased font size */
+  cursor: pointer;
+  scale: 0.8;
+  justify-content: center;
+  font-weight: bold;
+  align-items: center;
+}
+
+.counter-container button:hover {
+  border: none;
+  background-color: var(--btn2);
+  transform: translate(-2%) scale(1.07);
+  transition: 0.3s ease;
+
+} 
+
+.counter-container button:active {
+ background-color: var(--bg);
+ color: var(--color);
+}
+
+
+
+.increaseBtn svg {
+  display: flexS;
+  align-items: center;
+}
+
+.counter-container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 2rem;
+}
+
+/* welcome page */
+
+.counts {
+  margin-top: -20%;
+  display: flex;
+  font-weight: bold;
+  gap: 5rem;
+  font-size: 20px;
+  color: var(--bg);
+}
+
+.counts button {
+ padding: 5px;
+ background-color: rgba(255, 0, 0, 0.868);
+ border-radius: 5px;
+ border: none;
+ display: flex;
+}
+
+.counts button:hover {
+  transform: scale(1.1);
+}
+
+.counts button:active {
+  padding: 5px;
+ background-color: var(--bg);
+ font-size: 20px;
+ border-radius: 5px;
+ border: none;
+ display: flex;
+}
+
+.counts button svg:active {
+  color: var(--color);
+}
+
+
+
+.counts button svg {
+  color: var(--color);
+}
+
+
+.dbtn button{
+  margin-bottom: -50%;
+  background-color: red;
+  color: var(--color);
+}
+
+
+.mybtn{
+  font-size: 25px;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+
+
+  nav {
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 1rem; 
+    overflow: hidden;
+    padding: 10px;
+    height: auto; 
+  }
+
+  .logo {
+    font-size: 1.5em; 
+  }
+
+  .input-container {
+    width: 100%; 
+    margin-bottom: 10%;
+
+  }
+
+  .carousel-caption {
+    display: none;
+  }
+
+  .input-container input {
+    width: 35%; 
+    margin-left: 5%;
+
+  }
+
+  .input-container .search-btn {
+    margin-right: 60%;
+  }
+
+  .nav-icons {
+    margin-left: 20%; 
+    margin-top: -170px; 
+    padding-bottom: 7%;
+    width: 20%;
+    justify-content: space-evenly;
+  }
+  .off-screen-menu{
+    display: block;
+    left: -200px; 
+  }
+  .off-screen-menu.active{
+    left: 0px;
+  }
+
+  .carousel-inner img {
+    margin-top: 10vh; 
+    max-height: 30vh; 
+  }
+
+  #home {
+    margin-top: -19%; 
+    padding: 5px; 
+  }
+  #home2{
+    margin-top: -19%; 
+    padding: 5px;
+  }
+}
+
+/* Tablet Styles  */
+@media (min-width: 601px) and (max-width: 1024px) {
+  nav {
+    gap: 5rem; 
+    padding: 0 20px; 
+  }
+
+  .carousel-inner img {
+    margin-top: 8vh;
+    max-height: 60vh;
+  }
+
+  #home {
+    margin-top: 5vh;
+  }
+  #home2{
+    margin-top: 15vh;
+  }
+}
+
+ /* Add this to your CSS file */
+ .highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+/* Style for no results found */
+.no-results {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #666;
+  display: none;
+  grid-column: 1 / -1;
+}
