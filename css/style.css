@@ -617,6 +617,10 @@ option {
     margin-top: 4%;
   }
 
+  .main2 {
+    margin-top: 5%;
+  }
+
   #home, #home2 {
     /* transform: translate(0, 8rem); */
     position: fixed;

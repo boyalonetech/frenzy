@@ -2,268 +2,264 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Product</title>
   <style>
     /* Basic styling */
-
     :root {
-  --bg-color: #ecebeb;
-  --bg: #000;
-  --color: #fff;
-  --bg1-color: #d7d7d7;
-  --bg2-color2: rgb(0, 102, 0);
-  --secondary-color: white;
-  --btn : rgb(255, 153, 0);
-  --btn2: rgb(9, 200, 9);
-}
+      --bg-color: #ecebeb;
+      --bg: #000;
+      --color: #fff;
+      --bg1-color: #d7d7d7;
+      --bg2-color2: rgb(0, 102, 0);
+      --secondary-color: white;
+      --btn2 : rgb(255, 153, 0);
+      --btn2: rgb(9, 200, 9);
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-header {
-  display: flex;
-  align-items: center;
-  gap: 25rem;
-  width: 100%;
-  height: 10vh;
-  position: fixed;
-  z-index: 1000;
-  justify-content: space-between;
-  background-color: var(--color);
-  padding: 0 50px;
-  border-bottom: 1px solid var(--bg);
-}
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      height: 10vh;
+      position: fixed;
+      z-index: 1000;
+      justify-content: space-between;
+      background-color: var(--color);
+      padding: 0 20px;
+      border-bottom: 1px solid var(--bg);
+    }
 
-.input-container {
-  position: relative;
-}
+    .input-container {
+      position: relative;
+      display: none; /* Hide search on mobile by default */
+    }
 
-.input-container input {
-  width: 220px;
-  height: 35px;
-  padding: 10px;
-  outline: none;
-  background: var(--bg-color);
-  border: none;
-  padding-right: 40px;
-  border-radius: 20px;
-}
+    .input-container input {
+      width: 220px;
+      height: 35px;
+      padding: 10px;
+      outline: none;
+      background: var(--bg-color);
+      border: none;
+      padding-right: 40px;
+      border-radius: 20px;
+    }
 
-.search-btn {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  display: flex;
-  border: none;
-  cursor: pointer;
-}
+    .search-btn {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      display: flex;
+      border: none;
+      cursor: pointer;
+    }
 
-.nav-icons {
-  display: flex;
-  color: var(--bg);
-  gap: 1rem;
-  margin-left: -15px;
-}
+    .nav-icons {
+      display: flex;
+      color: var(--bg);
+      gap: 1rem;
+    }
 
-.nav-icons svg {
-  display: flex;
-  position: relative;
-  font-size: 80px;
-  color: var(--bg);
-  gap: 1rem;
-}
+    .nav-icons svg {
+      display: flex;
+      position: relative;
+      font-size: 80px;
+      color: var(--bg);
+      gap: 1rem;
+    }
 
-svg {
-  color: var(--bg);
-}
+    svg {
+      color: var(--bg);
+    }
 
-.logo {
-  font-size: 30px;
-  display: flex;
-  position: relative;
-}
+    .logo {
+      font-size: 24px;
+      display: flex;
+      position: relative;
+    }
 
-/* carousel */
-.carousel-inner img {
-  width: 100%;
-  margin-top: 4.5%;
-  max-height: 80vh;
-  object-fit: cover;
-}
+    /* carousel */
+    .carousel-inner img {
+      width: 100%;
+      margin-top: 4.5%;
+      max-height: 80vh;
+      object-fit: cover;
+    }
 
-/* HAm Menu */
-.off-screen-menu {
-  background: var(--color);
-  position: fixed;
-  top: 0;
-  left: -450px;
-  width: 100%;
-  max-width: 200px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-size: 1.2rem;
-  transition: 0.3s ease;
-  color: white;
-  z-index: 900;
-  border-right: 1px solid var(--bg);
-  overflow-y: scroll;
-}
+    /* HAm Menu */
+    .off-screen-menu {
+      background: var(--color);
+      position: fixed;
+      top: 0;
+      left: -450px;
+      width: 100%;
+      max-width: 200px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-size: 1.2rem;
+      transition: 0.3s ease;
+      color: white;
+      z-index: 900;
+      border-right: 1px solid var(--bg);
+      overflow-y: scroll;
+    }
 
-.off-screen-menu.active {
-  left: 0;
-}
+    .off-screen-menu.active {
+      left: 0;
+    }
 
-.off-screen-menu li {
-  list-style: none;
-}
+    .off-screen-menu li {
+      list-style: none;
+    }
 
-.main2 {
-  margin-top: 60%;
-  margin-right: auto;
-  padding-left: 45px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  font-size: 18px;
-  text-align: justify;
-}
+    .main2 {
+      margin-top: 60%;
+      margin-right: auto;
+      padding-left: 45px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 18px;
+      text-align: justify;
+    }
 
-.main3 {
-  margin-top: 15%;
-  margin-right: auto;
-  padding-left: 45px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  font-size: 18px;
-  text-align: justify;
-}
+    .main3 {
+      margin-top: 15%;
+      margin-right: auto;
+      padding-left: 45px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 18px;
+      text-align: justify;
+    }
 
-.main3 svg {
-  scale: 0.8;
-}
+    .main3 svg {
+      scale: 0.8;
+    }
 
-.main2 a {
-  text-decoration: none;
-  color: var(--bg);
-}
+    .main2 a {
+      text-decoration: none;
+      color: var(--bg);
+    }
 
-.main2 li {
-  align-items: center;
-}
+    .main2 li {
+      align-items: center;
+    }
 
-.main3 a {
-  text-decoration: none;
-  color: var(--bg);
-}
+    .main3 a {
+      text-decoration: none;
+      color: var(--bg);
+    }
 
-.main3 li {
-  align-items: center;
-}
+    .main3 li {
+      align-items: center;
+    }
 
-.main4 {
-  margin-top: 15%;
-  margin-right: auto;
-  padding-left: 45px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  font-size: 18px;
-  text-align: justify;
-}
+    .main4 {
+      margin-top: 15%;
+      margin-right: auto;
+      padding-left: 45px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 18px;
+      text-align: justify;
+    }
 
-.main4 svg {
-  scale: 0.8;
-}
+    .main4 svg {
+      scale: 0.8;
+    }
 
-.main4 a {
-  text-decoration: none;
-  color: var(--bg);
-}
+    .main4 a {
+      text-decoration: none;
+      color: var(--bg);
+    }
 
-.main4 li {
-  align-items: center;
-}
+    .main4 li {
+      align-items: center;
+    }
 
-.main4 a {
-  text-decoration: none;
-  color: var(--bg);
-}
+    .main4 a {
+      text-decoration: none;
+      color: var(--bg);
+    }
 
-.main4 li {
-  align-items: center;
-}
+    .main4 li {
+      align-items: center;
+    }
 
-/* scroll */
-.off-screen-menu::-webkit-scrollbar {
-  /* height: 2px; */
-  width: 5px;
-  color: var(--bg);
-}
+    /* scroll */
+    .off-screen-menu::-webkit-scrollbar {
+      width: 5px;
+      color: var(--bg);
+    }
 
-.off-screen-menu::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.258);
-  border-radius: 50px;
-}
+    .off-screen-menu::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.258);
+      border-radius: 50px;
+    }
 
-.off-screen-menu::-webkit-scrollbar-thumb {
-  background: #0000009c;
-  border-radius: 50px;
-}
+    .off-screen-menu::-webkit-scrollbar-thumb {
+      background: #0000009c;
+      border-radius: 50px;
+    }
 
-/* Home */
+    /* Home */
+    #home {
+      margin-top: -36%;
+      padding: 10px;
+      z-index: 1000;
+      position: fixed;
+    }
 
-#home {
-  margin-top: -36%;
-  padding: 10px;
-  z-index: 1000;
-  position: fixed;
-}
+    #home .homebtn {
+      background: #000;
+      border: none;
+      outline: none;
+      position: fixed;
+    }
 
-#home .homebtn {
-  background: #000;
-  border: none;
-  outline: none;
-  position: absolute;
-}
+    #home2 {
+      margin-top: -36%;
+      padding: 8px;
+      display: none;
+      z-index: 1000;
+      position: fixed;
+    }
 
-#home2 {
-  margin-top: -36%;
-  padding: 8px;
-  display: none;
-  z-index: 1000;
-  position: fixed;
-}
+    #home2 button {
+      background: none;
+      border: none;
+      outline: none;
+      position: fixed;
+    }
 
-#home2 button {
-  background: none;
-  border: none;
-  outline: none;
-  position: fixed;
-}
+    .svg {
+      color: var(--bg);
+    }
 
-.svg {
-  color: var(--bg);
-}
+    .add-home,
+    .svg {
+      color: var(--color);
+    }
 
-.add-home,
-.svg {
-  /* background-color: var(--bg); */
-  color: var(--color);
-}
-
-.slide-op {
-  z-index: 900;
-}
-
+    .slide-op {
+      z-index: 900;
+    }
 
     .add-btn {
       background-color: var(--btn2);
@@ -272,6 +268,7 @@ svg {
       cursor: pointer;
       border-radius: 20px;
       color: var(--color);
+      white-space: nowrap;
     }
 
     .modal {
@@ -284,14 +281,17 @@ svg {
       background-color: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: center;
+      z-index: 1100;
     }
 
     .modal-content {
       background-color: white;
       padding: 20px;
-      width: 300px;
+      width: 90%;
+      max-width: 300px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
     .modal-content input, .modal-content textarea {
@@ -308,62 +308,203 @@ svg {
       background-color: var(--btn2);
       border: none;
       cursor: pointer;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .close:hover {
+      color: #000;
     }
 
     .product-card {
       background-color: white;
       padding: 20px;
-      margin: 20px;
+      margin: 15px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: calc(100% - 30px);
+      max-width: 400px;
     }
 
     .product-card img {
       width: 100%;
       height: auto;
-      max-width: 100px;
-      max-height: 100px;
+      max-width: 100%;
+      max-height: 200px;
+      object-fit: contain;
     }
 
     .product-card h3 {
       margin: 10px 0;
+      font-size: 1.2rem;
     }
 
     .product-card .price {
       font-weight: bold;
       color: var(--btn2);
+      font-size: 1.1rem;
+    }
+
+    .product-card .description {
+      margin: 10px 0;
+      color: #555;
     }
 
     .product-card button {
       background-color: var(--btn2);
-      padding: 5px 10px;
+      padding: 8px 15px;
       border: none;
       color: var(--color);
       cursor: pointer;
+      border-radius: 5px;
+      font-size: 0.9rem;
     }
 
     .product-card .delete-btn {
       background-color: red;
-      margin-left: 10px;
+      margin-left: 0;
+    }
+
+    .product-card .buy-btn {
+      background-color: var(--btn2);
+    }
+
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .product-actions button, 
+    .product-actions a {
+      flex: 1;
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .product-actions a {
+      text-decoration: none;
     }
 
     .container {
       display: flex;
       flex-wrap: wrap;
       padding-top: 10%;
-      justify-content: space-around;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Responsive styles */
+    @media (min-width: 768px) {
+      header {
+        padding: 0 50px;
+        gap: 25rem;
+      }
+
+      header h1 {
+        font-size: 5em;
+        background-color: var(--btn2);
+      }
+
+      .input-container {
+        display: block; /* Show search on larger screens */
+      }
+
+      .product-card {
+        width: calc(50% - 30px);
+      }
+
+      .modal-content {
+        width: 400px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .product-card {
+        width: calc(33.333% - 30px);
+      }
+    }
+
+    @media (max-width: 576px) {
+      header {
+        padding: 0 15px;
+      }
+
+      .logo h1 {
+        font-size: 1.5rem;
+      }
+
+      .add-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+
+      .product-card {
+        margin: 10px;
+        padding: 15px;
+      }
+
+      .product-actions button, 
+      .product-actions a {
+        min-width: 80px;
+        font-size: 0.8rem;
+        padding: 6px 10px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .logo h1 {
+        font-size: 1.2rem;
+      }
+
+      .add-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+
+      .product-actions {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .product-actions button, 
+      .product-actions a {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-
-
   <div class="logo">
-    <img src="" alt="">
+    <section id="home">
+      <button class="homebtn">
+        <svg
+          id="svg"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30px"
+          height="30px"
+          viewBox="0 0 24 24"
+        >
+          <path fill="currentcolor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
+        </svg>
+      </button>
+    </section>
     <h1>Carts</h1>
   </div>
+
 
   <button class="add-btn" onclick="showModal()">+ Add Product</button>
 
@@ -483,7 +624,6 @@ svg {
       </li>
     </ul>
     <!-- second nav -->
-
     <ul class="main3">
       <li>
         <h5>
@@ -715,60 +855,55 @@ svg {
       </li>
     </ul>
   </div>
-
-  
 </header>
 
 <main>
-        <!-- Home -->
-        <section id="home">
-          <button class="homebtn">
-            <svg
-              id="svg"
-              xmlns="http://www.w3.org/2000/svg"
-              width="30px"
-              height="30px"
-              viewBox="0 0 24 24"
-            >
-              <path fill="currentcolor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
-            </svg>
-          </button>
-        </section>
-  
-        <section id="home2">
-          <button class="homebtn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30px"
-              height="30px"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentcolor"
-                d="M4 15V9h8V4.16L19.84 12L12 19.84V15z"
-              />
-            </svg>
-          </button>
-        </section>
+  <!-- Home -->
+  <section id="home">
+    <button class="homebtn">
+      <svg
+        id="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30px"
+        height="30px"
+        viewBox="0 0 24 24"
+      >
+        <path fill="currentcolor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
+      </svg>
+    </button>
+  </section>
 
+  <section id="home2">
+    <button class="homebtn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30px"
+        height="30px"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="currentcolor"
+          d="M4 15V9h8V4.16L19.84 12L12 19.84V15z"
+        />
+      </svg>
+    </button>
+  </section>
 
-<div class="container" id="product-container"></div>
+  <div class="container" id="product-container"></div>
 
-<!-- Modal -->
-<div class="modal" id="productModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h3 style="color: var(--btn2); margin-bottom: 1rem;">Add Product</h3>
-    <input type="file" id="productImage" accept="image/*">
-    <input type="text" id="productName" placeholder="Product Name">
-    <input type="text" id="productPrice" placeholder="e.g. ₦5000 or $25">
-    <textarea id="productDesc" placeholder="Short Description (max 4 lines)"></textarea>
-    <button class="submit-btn" onclick="addProduct()">Add to Page</button>
+  <!-- Modal -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 style="color: var(--btn2); margin-bottom: 1rem;">Add Product</h3>
+      <input type="file" id="productImage" accept="image/*">
+      <input type="text" id="productName" placeholder="Product Name">
+      <input type="text" id="productPrice" placeholder="e.g. ₦5000 or $25">
+      <textarea id="productDesc" placeholder="Short Description (max 4 lines)"></textarea>
+      <button class="submit-btn" onclick="addProduct()">Add to Page</button>
+    </div>
   </div>
-</div>
-
 </main>
-
 
 <script>
   const container = document.getElementById("product-container");
@@ -823,10 +958,10 @@ svg {
       <h3>${product.name}</h3>
       <p class="price">${product.price}</p>
       <p class="description">${product.desc}</p>
-      <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 10px;">
+      <div class="product-actions">
         <button class="buy-btn">Buy</button>
         <button class="delete-btn" onclick="deleteProduct(${index})">Delete</button>
-        <a href="index.html#scroll"><button class="buy-btn">See All product</button></a>
+        <a href="index.html#scroll"><button class="buy-btn">See All</button></a>
       </div>
     `;
     container.appendChild(card);

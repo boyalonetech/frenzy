@@ -49,7 +49,6 @@ window.addEventListener("scrollY", function () {
     } else {
         // Scrolling up
         ham.style.display = "none";
-        ham2.style.display = "none";  // Show element
     }
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative values
@@ -58,78 +57,74 @@ window.addEventListener("scrollY", function () {
 })
 
 
-// let lastScrollTop = 0;
+let lastScrollTop = 0;
 
-// window.addEventListener("scroll", function () {
-//     let scrollTop = window.scrollY || document.documentElement.scrollTop;
+window.addEventListener("scroll", function () {
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-//     if (scrollTop > lastScrollTop) {
-//         // Scrolling down
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
 
-//         console.log("Scrolling Up");
-//         ham.style.display = "none"; // Hide element
-//         hamMenu.classList.remove("active")
-//         ham2.style.display = "none"; 
+        console.log("Scrolling Up");
+        hamMenu.classList.remove("active")
 
       
-//     } else {
-//         // Scrolling up
-//         console.log("Scrolling Down");
-//         ham.style.display = "block";
-//         ham2.style.display = "none";  // Show element
-//     }
+    } else {
+        // Scrolling up
+        console.log("Scrolling Down");
+    }
 
-//     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative values
-// });
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative values
+});
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     document.querySelectorAll(".card").forEach((card, index) => {
-//         const countLabel = card.querySelector(".countLabel");
-//         const increaseBtn = card.querySelector(".increaseBtn");
-//         const decreaseBtn = card.querySelector(".decreaseBtn");
-//         const resetBtn = card.querySelector(".resetBtn");
-//         // const viewCartBtn = document.createElement("button");
-//         // viewCartBtn.textContent = "View Cart";
-//         // viewCartBtn.classList.add("viewCartBtn");
-//         // card.appendChild(viewCartBtn);
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".card").forEach((card, index) => {
+        const countLabel = card.querySelector(".countLabel");
+        const increaseBtn = card.querySelector(".increaseBtn");
+        const decreaseBtn = card.querySelector(".decreaseBtn");
+        const resetBtn = card.querySelector(".resetBtn");
+        // const viewCartBtn = document.createElement("button");
+        // viewCartBtn.textContent = "View Cart";
+        // viewCartBtn.classList.add("viewCartBtn");
+        // card.appendChild(viewCartBtn);
         
-//         // Hide reset button initially
-//         resetBtn.style.display = "none";
+        // Hide reset button initially
+        resetBtn.style.display = "none";
         
-//         // Retrieve stored count from localStorage
-//         let count = localStorage.getItem(`count_${index}`) || 0;
-//         countLabel.textContent = count;
+        // Retrieve stored count from localStorage
+        let count = localStorage.getItem(`count_${index}`) || 0;
+        countLabel.textContent = count;
 
-//         // Function to update localStorage
-//         function updateStorage() {
-//             localStorage.setItem(`count_${index}`, count);
-//         }
+        // Function to update localStorage
+        function updateStorage() {
+            localStorage.setItem(`count_${index}`, count);
+        }
 
-//         // Increase button functionality
-//         increaseBtn.addEventListener("click", () => {
-//             count++;
-//             countLabel.textContent = count;
-//             updateStorage();
-//         });
+        // Increase button functionality
+        increaseBtn.addEventListener("click", () => {
+            count++;
+            countLabel.textContent = count;
+            updateStorage();
+        });
 
-//         // Decrease button functionality
-//         decreaseBtn.addEventListener("click", () => {
-//             if (count > 0) {
-//                 count--;
-//                 countLabel.textContent = count;
-//                 updateStorage();
-//             }
-//         });
+        // Decrease button functionality
+        decreaseBtn.addEventListener("click", () => {
+            if (count > 0) {
+                count--;
+                countLabel.textContent = count;
+                updateStorage();
+            }
+        });
 
-//         // Reset button functionality
-//         resetBtn.addEventListener("click", () => {
-//             count = 0;
-//             countLabel.textContent = count;
-//             updateStorage();
-//         });
+        // Reset button functionality
+        resetBtn.addEventListener("click", () => {
+            count = 0;
+            countLabel.textContent = count;
+            updateStorage();
+        });
 
-//         // Redirect to cart page with selected items
+        // Redirect to cart page with selected items
         
-//         });
-//     });
+        });
+    });
 
