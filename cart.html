@@ -6,8 +6,661 @@
     <title>Document</title>
     <link rel="stylesheet" href="index.html">
     <link rel="stylesheet" href="style.css">
+    <style>:root {
+        --background: #101114;
+        --primary-color: #1c1d20;
+        --secondary-color: #2c2d30;
+        --accent-color: #00ffc4;
+        --text-color: #f9f9f9;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      
+      html {
+        font-family: Winky Sans;
+        font-size: 1rem;
+        color: var(--text-color);
+      }
+      
+      body {
+        min-height: 100vh;
+        padding: 1rem;
+        background-color: var(--background);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        margin-top: 16rem;
+        margin-bottom: 1.5rem;
+        font-size: 3rem;
+        font-weight: 800;
+        text-shadow: 0 4px 8px #049472;
+        color: var(--accent-color);
+        text-align: center;
+        text-transform: uppercase;
+      }
+      
+      .wrapper {
+        width: 700px;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      #todo-input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background: none;
+        border: 2px solid var(--secondary-color);
+        border-radius: 5rem;
+        font: inherit;
+        color: var(--text-color);
+        caret-color: var(--accent-color);
+      }
+      
+      #todo-input:focus {
+        outline: none;
+      }
+      
+      form {
+        position: relative;
+      }
+      
+      #add-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+      
+        background-color: var(--accent-color);
+        height: 100%;
+        padding: 0 30px;
+        border: none;
+      
+        color: var(--background);
+        font: inherit;
+        font-weight: 600;
+        color: var(--background);
+        cursor: pointer;
+        border-radius: 0 1rem 1rem 0;
+      }
+      
+      .todo {
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+        background-color: var(--primary-color);
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: space-between;
+      
+        align-items: center;
+      }
+      
+      .todo .todo-text {
+        padding: 1rem;
+        padding-right: 0;
+        flex-grow: 1;
+        transition: 0.2s ease;
+      }
+      
+      .delete-button {
+        padding: 3px;
+        background: none;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      
+      .delete-button svg {
+        transition: 200ms ease;
+      }
+      
+      .delete-button:hover svg {
+        fill: #ff0033;
+      }
+      
+      .custom-checkbox {
+        border: 2px solid var(--accent-color);
+        border-radius: 50%;
+        min-height: 20px;
+        min-width: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        transition: 0.2s ease;
+      }
+      
+      input[type="checkbox"]:checked ~ .custom-checkbox {
+        background-color: var(--accent-color);
+      }
+      
+      input[type="checkbox"]:checked ~ .custom-checkbox svg {
+        fill: var(--primary-color);
+      }
+      
+      input[type="checkbox"]:checked ~ .todo-text {
+        color: var(--secondary-color);
+        text-decoration: line-through;
+      }
+      
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      #todo-input{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      @media (max-width: 500px) {
+        html {
+          font-size: 1rem;
+        }
+      
+        #add-button {
+          position: unset;
+          width: 100%;
+          border-radius: 1rem;
+          margin-top: 1rem;
+          padding: 1rem;
+          height: auto;
+        }
+      
+        h1 {
+          margin-top: 50px;
+          font-size: 15vw;
+        }
+      }</style>
+    <style>
+        header {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+  font-family: Josefin Sans;
+  box-shadow: 0 4px 2px -2px gray;
+  padding: 3rem;
+
+  text-align: center;
+  width: auto;
+  background-color: white;
+}
+
+.cart-page {
+  padding: 2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: right;
+  box-sizing: border-box;
+}
+
+
+nav {
+  display: flex;
+  flex-direction: row;
+  transform: translate(-20%);
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
+  padding: 1rem;
+  border: 1px solid #000;
+}
+
+nav a:hover {
+  color: white;
+  background-color: #000;
+  transition: 0.5s;
+}
+
+.shop-cards {
+  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.card {
+  width: 190%;
+  background-color: rgb(248, 248, 248);
+  padding: 1rem;
+  gap: 2rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  justify-content: space-between;
+  display: flex;
+  align-items: left;
+  flex-direction: row;
+  border: 1px solid #000;
+  /* box-shadow: 1px 2px 1px 2px rgba(141, 141, 141, 0.519); */
+}
+
+.svg-btn {
+  background-color: transparent;
+  border: 1px solid #000;
+  cursor: pointer;
+  width: 2rem;
+  padding: 1rem;
+  width: fit-content;
+}
+
+.svg-btn:hover {
+  background-color: orangered;
+  color: white;
+  transition: 0.5s;
+  cursor: pointer;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.card:hover {
+  box-shadow: 1px 2px 1px 2px rgba(93, 92, 92, 0.395);
+  transition: 0.5s;
+  border: none;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 6rem;
+  overflow: scroll;
+  max-width: 820px;
+  padding: 1rem;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.detail-tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+}
+.card .img-container {
+  overflow: hidden;
+  border-radius: 1rem;
+  width: 15rem;
+  height: 10rem;
+  border: 1px solid #000;
+}
+
+.detail-tag h2 {
+  font-size: 1rem;
+}
+
+#top {
+  object-position: bottom;
+}
+
+.card select {
+  width: fit-content;
+  border-radius: 1rem;
+}
+
+.add-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+button {
+  width: 2rem;
+  height: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  border: 1px solid #000;
+  font-family: Roboto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  color: inherit;
+  text-align: center;
+}
+
+button:hover {
+  transition: 0.5s;
+  color: white;
+  background-color: #000;
+}
+
+/* MrDee Styles Ended Here So You All Suckers Know */
+    </style>
 </head>
 <body>
-    <script src="main.js"></script>
+    <header>
+        <h1>Your Cart</h1>
+        <div class="wrapper">
+            <form>
+              <input
+                type="text"
+                id="todo-input"
+                placeholder="Insert What You Want ToDo and click on Add"
+                autocomplete="off"
+              />
+              <button id="add-button">Add</button>
+            </form>
+  
+        <nav>
+          <button onclick="addItems()">Add More Items</button>
+          <button >Payment</button>
+        </nav>
+      </header>
+            <main>
+        <section class="cart-page">
+          <article class="shop-cards">
+            <div class="card">
+              <div class="img-container">
+                <img src="assets/images/camers.webp" alt="items-picture" />
+              </div>
+              <div class="detail-tag">
+                <p>4k HD Camera</p>
+  
+                <h2>$140</h2>
+                <div class="svg-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M17 4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7V2H17V4ZM9 9V17H11V9H9ZM13 9V17H15V9H13Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="img-container">
+                <img src="/assets/images/nikecourt blanc.jpg" alt="items-picture" />
+              </div>
+              <div class="detail-tag">
+                <p>Nike Sneakers</p>
+  
+                <h2>$140</h2>
+                <div class="svg-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M17 4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7V2H17V4ZM9 9V17H11V9H9ZM13 9V17H15V9H13Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="img-container">
+                <img src="/assets/images/comfort-chair.webp" alt="items-picture" />
+              </div>
+              <div class="detail-tag">
+                <p>Comfort Chair</p>
+  
+                <h2>$140</h2>
+                <div class="svg-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M17 4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7V2H17V4ZM9 9V17H11V9H9ZM13 9V17H15V9H13Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="img-container">
+                <img src="/assets/images/party-bag.avif" alt="items-picture" />
+              </div>
+              <div class="detail-tag">
+                <p>party-bag</p>
+  
+                <h2>$140</h2>
+                <div class="svg-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M17 4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7V2H17V4ZM9 9V17H11V9H9ZM13 9V17H15V9H13Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="img-container">
+                <img src="/assets/images/ring-light.jpg" alt="items-picture" />
+              </div>
+              <div class="detail-tag">
+                <p>RIng Light</p>
+  
+                <h2>$140</h2>
+                <div class="svg-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M17 4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7V2H17V4ZM9 9V17H11V9H9ZM13 9V17H15V9H13Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="img-container">
+                <img src="assets/images/drone.png" alt="items-picture" />
+              </div>
+              <div class="detail-tag">
+                <p>Drone</p>
+  
+                <h2>$140</h2>
+                <div class="svg-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M17 4H22V6H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V6H2V4H7V2H17V4ZM9 9V17H11V9H9ZM13 9V17H15V9H13Z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+      <script>const todoForm = document.querySelector("form");
+        const todoInput = document.getElementById("todo-input");
+        const todoListUL = document.getElementById("todo-list");
+        
+        let allTodos = getTodos();
+        updateTodoList();
+        
+        todoForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          addTodo();
+        });
+        
+        function addTodo() {
+          const todoText = todoInput.value.trim();
+          if (todoText.length > 0) {
+            allTodos.push(todoText);
+            updateTodoList();
+            saveTodos();
+            todoInput.value = "";
+          }
+        }
+        
+        function updateTodoList() {
+          todoListUL.innerHTML = "";
+          allTodos.forEach((todo, todoIndex) => {
+            todoItem = createTodoItem(todo, todoIndex);
+            todoListUL.append(todoItem);
+          });
+        }
+        
+        function createTodoItem(todo, todoIndex) {
+          const todoId = "todo-" + todoIndex;
+          const todoLI = document.createElement("li");
+          todoLI.className = "todo";
+          todoLI.innerHTML = `
+                  
+        
+                                <div class="card">
+                <div class="img-container">
+                  <img
+                    src="assets/images/Jordans-red.png"
+                    alt="items-picture"
+                  />
+                </div>
+                <div class="detail-tag">
+                  <p>Nike Sneakers</p>
+
+                  <h2>$140</h2>
+                </div>
+                <div class="counter-container">
+                  <button class="increaseBtn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="40px"
+                      height="40px"
+                      viewBox="0 0 32 32"
+                    >
+                      <path
+                        fill="currentcolor"
+                        d="M29.02 11.754L8.416 9.474L7.16 4.715a.76.76 0 0 0-.727-.558H3.34a1.21 1.21 0 0 0-.963-.49a1.24 1.24 0 1 0 0 2.483c.4 0 .738-.2.965-.492h2.512l5.23 19.8a3.28 3.28 0 0 0-.89 2.242a3.29 3.29 0 0 0 3.292 3.293a3.296 3.296 0 0 0 3.297-3.293a3.2 3.2 0 0 0-.093-.743h5.533a3.3 3.3 0 0 0-.092.743c0 1.82 1.476 3.293 3.296 3.293S28.72 29.52 28.72 27.7a3.296 3.296 0 0 0-3.294-3.297c-.95 0-1.8.41-2.402 1.053h-7.136a3.28 3.28 0 0 0-2.402-1.053c-.38 0-.738.078-1.077.196l-.182-.686H26.81a2.5 2.5 0 0 0 2.39-1.96l1.575-7.798a2 2 0 0 0 .04-.414a1.995 1.995 0 0 0-1.795-1.988zm-3.592 16.24a.3.3 0 0 1-.297-.295c.003-.166.135-.298.298-.298s.295.132.297.297a.3.3 0 0 1-.297.294zm1.78-7.495l.948-.95l-.318 1.58zm-14.453-9.037L13.79 12.5l-1.29 1.29l-1.293-1.29l1.087-1.088zm4.498.498l.538.54l-1.29 1.29l-1.293-1.29l.688-.69l1.358.15zM9.63 14.076l.87-.868l1.29 1.292l-1.29 1.29l-.565-.563l-.304-1.152zm-.295-1.12l-.328-1.24l.785.785zM21.79 16.5l-1.29 1.29l-1.293-1.29l1.292-1.293zm-.583-2l1.292-1.292l1.29 1.292l-1.29 1.292zM18.5 15.79l-1.293-1.29l1.292-1.293l1.29 1.292zm-.71.71l-1.29 1.29l-1.292-1.29l1.292-1.293zm-3.29-.71l-1.293-1.29l1.292-1.293l1.29 1.292zm-.71.71l-1.29 1.29l-1.293-1.29l1.292-1.293zm-3.29.707l1.29 1.292l-.784.783l-.54-2.044l.033-.033zm.802 3.197l1.197-1.197l1.29 1.292l-1.29 1.29l-1.13-1.13zm1.906-1.905l1.29-1.293l1.293 1.292l-1.29 1.29l-1.292-1.29zm3.292.707l1.292 1.292l-1.292 1.29l-1.292-1.29zm.708-.708l1.292-1.293l1.29 1.292l-1.29 1.29zm3.29.707l1.293 1.292l-1.29 1.29l-1.292-1.292zm.71-.708l1.29-1.293l1.293 1.292l-1.29 1.29zm2-2l1.29-1.293l1.293 1.292l-1.29 1.29zm2-2l1.29-1.293L27.79 14.5l-1.29 1.292l-1.293-1.293zm-.71-.708l-1.155-1.156l2.082.23zM21.792 12.5l-1.29 1.292l-1.293-1.292l.29-.29l2.253.25zm-7.29-.71l-.152-.15l.273.03l-.12.12zm-4 .002l-.65-.65l1.17.13zm4 9.415l1.205 1.205h-2.41zm4 0l1.205 1.206h-2.412zm4 0l1.207 1.207h-2.414zm.707-.708l1.292-1.293l1.29 1.292l-1.29 1.29zm2-2l1.292-1.292l1.29 1.29l-1.29 1.293l-1.293-1.29zm3.292-.71l-1.292-1.29l1.29-1.292l.445.444l-.43 2.124l-.014.015zm.5-4.5l-.5.5l-.66-.657l1.017.112c.054.008.1.026.144.044zM13.488 27.993a.297.297 0 0 1 0-.593a.296.296 0 0 1 0 .591zm13.323-5.58h-1.517l1.207-1.207l.93.93c-.187.17-.423.29-.62.277"
+                      />
+                    </svg>
+                    Add to Cart
+                  </button>
+                  <button class="resetBtn" style="display: none">Reset</button>
+                </div>
+                <div class="dbtn">
+                  <button style="opacity: 0" class="">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20px"
+                      height="20px"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentcolor"
+                        d="M7.616 20q-.667 0-1.141-.475T6 18.386V6h-.5q-.213 0-.356-.144T5 5.499t.144-.356T5.5 5H9q0-.31.23-.54t.54-.23h4.46q.31 0 .54.23T15 5h3.5q.213 0 .356.144t.144.357t-.144.356T18.5 6H18v12.385q0 .666-.475 1.14t-1.14.475zM17 6H7v12.385q0 .269.173.442t.443.173h8.769q.269 0 .442-.173t.173-.442zm-6.692 11q.213 0 .357-.144t.143-.356v-8q0-.213-.144-.356T10.307 8t-.356.144t-.143.356v8q0 .213.144.356q.144.144.356.144m3.385 0q.213 0 .356-.144t.143-.356v-8q0-.213-.144-.356Q13.904 8 13.692 8q-.213 0-.357.144t-.143.356v8q0 .213.144.356t.357.144M7 6v13z"
+                      />
+                    </svg>
+                  </button>
+
+                  <div class="add-items"></div>
+                </div>
+                <div class="counts">
+                  Carts: <span class="countLabel">0</span>
+                  <button class="decreaseBtn">
+                   Remove Cart
+                  </button>
+                </div>
+
+ <button class="delete-button">
+                    <svg
+                      fill="var(--secondary-color)"
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M 6.496094 1 C 5.675781 1 5 1.675781 5 2.496094 L 5 3 L 2 3 L 2 4 L 3 4 L 3 12.5 C 3 13.324219 3.675781 14 4.5 14 L 10.5 14 C 11.324219 14 12 13.324219 12 12.5 L 12 4 L 13 4 L 13 3 L 10 3 L 10 2.496094 C 10 1.675781 9.324219 1 8.503906 1 Z M 6.496094 2 L 8.503906 2 C 8.785156 2 9 2.214844 9 2.496094 L 9 3 L 6 3 L 6 2.496094 C 6 2.214844 6.214844 2 6.496094 2 Z M 4 4 L 11 4 L 11 12.5 C 11 12.78125 10.78125 13 10.5 13 L 4.5 13 C 4.21875 13 4 12.78125 4 12.5 Z M 5 5 L 5 12 L 6 12 L 6 5 Z M 7 5 L 7 12 L 8 12 L 8 5 Z M 9 5 L 9 12 L 10 12 L 10 5 Z"
+                      ></path>
+                    </svg>
+                  </button>
+
+
+              </div>
+                  </button>
+        `;
+        
+          const deleteButton = todoLI.querySelector(".delete-button");
+          deleteButton.addEventListener("click", () => {
+            deleteTodoItem(todoIndex);
+          });
+        
+          return todoLI;
+        }
+        
+        function deleteTodoItem(todoIndex) {
+          allTodos = allTodos.filter((_, i) => i !== todoIndex);
+          saveTodos();
+          updateTodoList();
+        }
+        
+        function saveTodos() {
+          const todosJson = JSON.stringify(allTodos);
+          localStorage.setItem("todos", todosJson);
+        }
+        
+        function getTodos() {
+          const todos = localStorage.getItem("todos") || "[]";
+          return JSON.parse(todos);
+        }</script>
 </body>
 </html>

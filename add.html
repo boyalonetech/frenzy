@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Product</title>
+  <style>
+    /* Basic styling */
+
+    :root {
+  --bg-color: #ecebeb;
+  --bg: #000;
+  --color: #fff;
+  --bg1-color: #d7d7d7;
+  --bg2-color2: rgb(0, 102, 0);
+  --secondary-color: white;
+  --btn : rgb(255, 153, 0);
+  --btn2: rgb(9, 200, 9);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 25rem;
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  z-index: 1000;
+  justify-content: space-between;
+  background-color: var(--color);
+  padding: 0 50px;
+  border-bottom: 1px solid var(--bg);
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container input {
+  width: 220px;
+  height: 35px;
+  padding: 10px;
+  outline: none;
+  background: var(--bg-color);
+  border: none;
+  padding-right: 40px;
+  border-radius: 20px;
+}
+
+.search-btn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  display: flex;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-icons {
+  display: flex;
+  color: var(--bg);
+  gap: 1rem;
+  margin-left: -15px;
+}
+
+.nav-icons svg {
+  display: flex;
+  position: relative;
+  font-size: 80px;
+  color: var(--bg);
+  gap: 1rem;
+}
+
+svg {
+  color: var(--bg);
+}
+
+.logo {
+  font-size: 30px;
+  display: flex;
+  position: relative;
+}
+
+/* carousel */
+.carousel-inner img {
+  width: 100%;
+  margin-top: 4.5%;
+  max-height: 80vh;
+  object-fit: cover;
+}
+
+/* HAm Menu */
+.off-screen-menu {
+  background: var(--color);
+  position: fixed;
+  top: 0;
+  left: -450px;
+  width: 100%;
+  max-width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 1.2rem;
+  transition: 0.3s ease;
+  color: white;
+  z-index: 900;
+  border-right: 1px solid var(--bg);
+  overflow-y: scroll;
+}
+
+.off-screen-menu.active {
+  left: 0;
+}
+
+.off-screen-menu li {
+  list-style: none;
+}
+
+.main2 {
+  margin-top: 60%;
+  margin-right: auto;
+  padding-left: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.main3 {
+  margin-top: 15%;
+  margin-right: auto;
+  padding-left: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.main3 svg {
+  scale: 0.8;
+}
+
+.main2 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main2 li {
+  align-items: center;
+}
+
+.main3 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main3 li {
+  align-items: center;
+}
+
+.main4 {
+  margin-top: 15%;
+  margin-right: auto;
+  padding-left: 45px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.main4 svg {
+  scale: 0.8;
+}
+
+.main4 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main4 li {
+  align-items: center;
+}
+
+.main4 a {
+  text-decoration: none;
+  color: var(--bg);
+}
+
+.main4 li {
+  align-items: center;
+}
+
+/* scroll */
+.off-screen-menu::-webkit-scrollbar {
+  /* height: 2px; */
+  width: 5px;
+  color: var(--bg);
+}
+
+.off-screen-menu::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.258);
+  border-radius: 50px;
+}
+
+.off-screen-menu::-webkit-scrollbar-thumb {
+  background: #0000009c;
+  border-radius: 50px;
+}
+
+/* Home */
+
+#home {
+  margin-top: -36%;
+  padding: 10px;
+  z-index: 1000;
+  position: fixed;
+}
+
+#home .homebtn {
+  background: #000;
+  border: none;
+  outline: none;
+  position: absolute;
+}
+
+#home2 {
+  margin-top: -36%;
+  padding: 8px;
+  display: none;
+  z-index: 1000;
+  position: fixed;
+}
+
+#home2 button {
+  background: none;
+  border: none;
+  outline: none;
+  position: fixed;
+}
+
+.svg {
+  color: var(--bg);
+}
+
+.add-home,
+.svg {
+  /* background-color: var(--bg); */
+  color: var(--color);
+}
+
+.slide-op {
+  z-index: 900;
+}
+
+
+    .add-btn {
+      background-color: var(--btn2);
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 20px;
+      color: var(--color);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--btn2);
+      border: none;
+      cursor: pointer;
+    }
+
+    .product-card {
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      max-width: 100px;
+      max-height: 100px;
+    }
+
+    .product-card h3 {
+      margin: 10px 0;
+    }
+
+    .product-card .price {
+      font-weight: bold;
+      color: var(--btn2);
+    }
+
+    .product-card button {
+      background-color: var(--btn2);
+      padding: 5px 10px;
+      border: none;
+      color: var(--color);
+      cursor: pointer;
+    }
+
+    .product-card .delete-btn {
+      background-color: red;
+      margin-left: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 10%;
+      justify-content: space-around;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+
+
+  <div class="logo">
+    <img src="" alt="">
+    <h1>Carts</h1>
+  </div>
+
+  <button class="add-btn" onclick="showModal()">+ Add Product</button>
+
+  <div class="off-screen-menu" id="offScreenMenu">
+    <ul class="main2">
+      <li>
+        <h5>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              style="display: none"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6l2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            GENERAL</a
+          >
+        </h5>
+      </li>
+      <li>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6l2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          Home</a
+        >
+      </li>
+      <li>
+        <a href="#projects">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 2048 2048"
+          >
+            <path
+              fill=""
+              d="M2048 384v1280H0V384h640V256q0-27 10-50t27-40t41-28t50-10h512q27 0 50 10t40 27t28 41t10 50v128zm-1280 0h512V256H768zM128 512v185l640 319V896h512v120l640-319V512zm768 512v128h256v-128zm1024 512V839l-640 321v120H768v-120L128 839v697z"
+            />
+          </svg>
+          E-commerce</a
+        >
+      </li>
+      <li>
+        <a href="#services">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 32 32"
+          >
+            <path fill="currentColor" d="M20 20h10v2H20zm0 4h6v2h-6z" />
+            <path
+              fill="currentColor"
+              d="M30 17v-1a13.987 13.987 0 1 0-10.77 13.625l-.46-1.946A12 12 0 0 1 16 28c-.19 0-.375-.019-.563-.027A20.3 20.3 0 0 1 12.026 17Zm-2.041-2h-5.984a24.3 24.3 0 0 0-2.774-10.559A12.02 12.02 0 0 1 27.96 15M16.563 4.027A20.3 20.3 0 0 1 19.974 15h-7.948a20.3 20.3 0 0 1 3.411-10.973C15.625 4.02 15.81 4 16 4s.375.019.563.027m-3.764.414A24.3 24.3 0 0 0 10.025 15H4.042a12.02 12.02 0 0 1 8.757-10.559m0 23.118A12.02 12.02 0 0 1 4.042 17h5.983a24.3 24.3 0 0 0 2.774 10.559"
+            />
+          </svg>
+          Services</a
+        >
+      </li>
+      <li>
+        <a href="#skills">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 36 36"
+          >
+            <path
+              fill="#000"
+              d="M32 5H4a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2M4 29V7h28v22Z"
+              class="clr-i-outline clr-i-outline-path-1"
+            />
+            <path
+              fill="#000"
+              d="m15.62 15.222l-6.018 8.746l-4.052-3.584l1.06-1.198l2.698 2.386l6.326-9.192l6.75 10.015l6.754-8.925l1.276.966l-8.106 10.709z"
+              class="clr-i-outline clr-i-outline-path-2"
+            />
+            <path fill="none" d="M0 0h36v36H0z" />
+          </svg>
+          Anaytics</a
+        >
+      </li>
+      <li>
+        <a href="#about-section"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M256 42.667c117.822 0 213.334 95.512 213.334 213.333c0 117.82-95.512 213.334-213.334 213.334c-117.82 0-213.333-95.513-213.333-213.334S138.18 42.667 256 42.667m21.38 192h-42.666v128h42.666zM256.217 144c-15.554 0-26.837 11.22-26.837 26.371c0 15.764 10.986 26.963 26.837 26.963c15.235 0 26.497-11.2 26.497-26.667c0-15.446-11.262-26.667-26.497-26.667"
+            />
+          </svg>
+          About</a
+        >
+      </li>
+    </ul>
+    <!-- second nav -->
+
+    <ul class="main3">
+      <li>
+        <h5>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              style="display: none"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6l2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            GENERAL</a
+          >
+        </h5>
+      </li>
+      <li>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6l2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          Home</a
+        >
+      </li>
+      <li>
+        <a href="#projects">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 2048 2048"
+          >
+            <path
+              fill=""
+              d="M2048 384v1280H0V384h640V256q0-27 10-50t27-40t41-28t50-10h512q27 0 50 10t40 27t28 41t10 50v128zm-1280 0h512V256H768zM128 512v185l640 319V896h512v120l640-319V512zm768 512v128h256v-128zm1024 512V839l-640 321v120H768v-120L128 839v697z"
+            />
+          </svg>
+          E-commerce</a
+        >
+      </li>
+      <li>
+        <a href="#services">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 32 32"
+          >
+            <path fill="currentColor" d="M20 20h10v2H20zm0 4h6v2h-6z" />
+            <path
+              fill="currentColor"
+              d="M30 17v-1a13.987 13.987 0 1 0-10.77 13.625l-.46-1.946A12 12 0 0 1 16 28c-.19 0-.375-.019-.563-.027A20.3 20.3 0 0 1 12.026 17Zm-2.041-2h-5.984a24.3 24.3 0 0 0-2.774-10.559A12.02 12.02 0 0 1 27.96 15M16.563 4.027A20.3 20.3 0 0 1 19.974 15h-7.948a20.3 20.3 0 0 1 3.411-10.973C15.625 4.02 15.81 4 16 4s.375.019.563.027m-3.764.414A24.3 24.3 0 0 0 10.025 15H4.042a12.02 12.02 0 0 1 8.757-10.559m0 23.118A12.02 12.02 0 0 1 4.042 17h5.983a24.3 24.3 0 0 0 2.774 10.559"
+            />
+          </svg>
+          Services</a
+        >
+      </li>
+      <li>
+        <a href="#skills">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 36 36"
+          >
+            <path
+              fill="#000"
+              d="M32 5H4a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2M4 29V7h28v22Z"
+              class="clr-i-outline clr-i-outline-path-1"
+            />
+            <path
+              fill="#000"
+              d="m15.62 15.222l-6.018 8.746l-4.052-3.584l1.06-1.198l2.698 2.386l6.326-9.192l6.75 10.015l6.754-8.925l1.276.966l-8.106 10.709z"
+              class="clr-i-outline clr-i-outline-path-2"
+            />
+            <path fill="none" d="M0 0h36v36H0z" />
+          </svg>
+          Anaytics</a
+        >
+      </li>
+      <li>
+        <a href="#about-section"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M256 42.667c117.822 0 213.334 95.512 213.334 213.333c0 117.82-95.512 213.334-213.334 213.334c-117.82 0-213.333-95.513-213.333-213.334S138.18 42.667 256 42.667m21.38 192h-42.666v128h42.666zM256.217 144c-15.554 0-26.837 11.22-26.837 26.371c0 15.764 10.986 26.963 26.837 26.963c15.235 0 26.497-11.2 26.497-26.667c0-15.446-11.262-26.667-26.497-26.667"
+            />
+          </svg>
+          About</a
+        >
+      </li>
+    </ul>
+
+    <!-- third nav -->
+    <ul class="main4">
+      <li>
+        <h5>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              style="display: none"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="evenodd"
+                d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6l2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            GENERAL</a
+          >
+        </h5>
+      </li>
+      <li>
+        <a href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6l2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          Home</a
+        >
+      </li>
+      <li>
+        <a href="#projects">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 2048 2048"
+          >
+            <path
+              fill=""
+              d="M2048 384v1280H0V384h640V256q0-27 10-50t27-40t41-28t50-10h512q27 0 50 10t40 27t28 41t10 50v128zm-1280 0h512V256H768zM128 512v185l640 319V896h512v120l640-319V512zm768 512v128h256v-128zm1024 512V839l-640 321v120H768v-120L128 839v697z"
+            />
+          </svg>
+          E-commerce</a
+        >
+      </li>
+      <li>
+        <a href="#services">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 32 32"
+          >
+            <path fill="currentColor" d="M20 20h10v2H20zm0 4h6v2h-6z" />
+            <path
+              fill="currentColor"
+              d="M30 17v-1a13.987 13.987 0 1 0-10.77 13.625l-.46-1.946A12 12 0 0 1 16 28c-.19 0-.375-.019-.563-.027A20.3 20.3 0 0 1 12.026 17Zm-2.041-2h-5.984a24.3 24.3 0 0 0-2.774-10.559A12.02 12.02 0 0 1 27.96 15M16.563 4.027A20.3 20.3 0 0 1 19.974 15h-7.948a20.3 20.3 0 0 1 3.411-10.973C15.625 4.02 15.81 4 16 4s.375.019.563.027m-3.764.414A24.3 24.3 0 0 0 10.025 15H4.042a12.02 12.02 0 0 1 8.757-10.559m0 23.118A12.02 12.02 0 0 1 4.042 17h5.983a24.3 24.3 0 0 0 2.774 10.559"
+            />
+          </svg>
+          Services</a
+        >
+      </li>
+      <li>
+        <a href="#skills">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 36 36"
+          >
+            <path
+              fill="#000"
+              d="M32 5H4a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2M4 29V7h28v22Z"
+              class="clr-i-outline clr-i-outline-path-1"
+            />
+            <path
+              fill="#000"
+              d="m15.62 15.222l-6.018 8.746l-4.052-3.584l1.06-1.198l2.698 2.386l6.326-9.192l6.75 10.015l6.754-8.925l1.276.966l-8.106 10.709z"
+              class="clr-i-outline clr-i-outline-path-2"
+            />
+            <path fill="none" d="M0 0h36v36H0z" />
+          </svg>
+          Anaytics</a
+        >
+      </li>
+      <li>
+        <a href="#about-section"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24px"
+            height="24px"
+            viewBox="0 0 512 512"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M256 42.667c117.822 0 213.334 95.512 213.334 213.333c0 117.82-95.512 213.334-213.334 213.334c-117.82 0-213.333-95.513-213.333-213.334S138.18 42.667 256 42.667m21.38 192h-42.666v128h42.666zM256.217 144c-15.554 0-26.837 11.22-26.837 26.371c0 15.764 10.986 26.963 26.837 26.963c15.235 0 26.497-11.2 26.497-26.667c0-15.446-11.262-26.667-26.497-26.667"
+            />
+          </svg>
+          About</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  
+</header>
+
+<main>
+        <!-- Home -->
+        <section id="home">
+          <button class="homebtn">
+            <svg
+              id="svg"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30px"
+              height="30px"
+              viewBox="0 0 24 24"
+            >
+              <path fill="currentcolor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z" />
+            </svg>
+          </button>
+        </section>
+  
+        <section id="home2">
+          <button class="homebtn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30px"
+              height="30px"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentcolor"
+                d="M4 15V9h8V4.16L19.84 12L12 19.84V15z"
+              />
+            </svg>
+          </button>
+        </section>
+
+
+<div class="container" id="product-container"></div>
+
+<!-- Modal -->
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 style="color: var(--btn2); margin-bottom: 1rem;">Add Product</h3>
+    <input type="file" id="productImage" accept="image/*">
+    <input type="text" id="productName" placeholder="Product Name">
+    <input type="text" id="productPrice" placeholder="e.g. ₦5000 or $25">
+    <textarea id="productDesc" placeholder="Short Description (max 4 lines)"></textarea>
+    <button class="submit-btn" onclick="addProduct()">Add to Page</button>
+  </div>
+</div>
+
+</main>
+
+
+<script>
+  const container = document.getElementById("product-container");
+
+  function showModal() {
+    document.getElementById("productModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("productModal").style.display = "none";
+  }
+
+  function addProduct() {
+    const imageInput = document.getElementById("productImage");
+    const name = document.getElementById("productName").value;
+    const price = document.getElementById("productPrice").value;
+    const desc = document.getElementById("productDesc").value;
+
+    if (!imageInput.files[0] || !name || !price || !desc) {
+      alert("Please fill all fields.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const imageData = e.target.result;
+      const product = { image: imageData, name, price, desc };
+      
+      const products = JSON.parse(localStorage.getItem("products") || "[]");
+      products.push(product);
+      localStorage.setItem("products", JSON.stringify(products));
+
+      clearInputs();
+      closeModal();
+      loadproducts();
+    };
+    reader.readAsDataURL(imageInput.files[0]);
+  }
+
+  function deleteProduct(index) {
+    const products = JSON.parse(localStorage.getItem("products") || "[]");
+    products.splice(index, 1); // Remove the product from the array
+    localStorage.setItem("products", JSON.stringify(products));
+    loadproducts(); // Re-load the products after deletion
+  }
+
+  function renderProduct(product, index) {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p class="price">${product.price}</p>
+      <p class="description">${product.desc}</p>
+      <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: 10px;">
+        <button class="buy-btn">Buy</button>
+        <button class="delete-btn" onclick="deleteProduct(${index})">Delete</button>
+        <a href="index.html#scroll"><button class="buy-btn">See All product</button></a>
+      </div>
+    `;
+    container.appendChild(card);
+  }
+
+  function clearInputs() {
+    document.getElementById("productImage").value = '';
+    document.getElementById("productName").value = '';
+    document.getElementById("productPrice").value = '';
+    document.getElementById("productDesc").value = '';
+  }
+
+  function loadproducts() {
+    container.innerHTML = "";
+    const products = JSON.parse(localStorage.getItem("products") || "[]");
+    products.forEach((p, i) => renderProduct(p, i));
+  }
+
+  window.onload = loadproducts;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact-us</title>
+    <!-- custom-styles -->
+    <link rel="stylesheet" href="style.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "USNmjxbiQePtgf4pp",
+        });
+      })();
+    </script>
+
+    <style>
+      /* default styles */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        place-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      input:user-valid {
+        border: 2px solid #25a73f;
+      }
+      input:user-invalid {
+        border: 2px solid red;
+      }
+      /* Mobile Responsibveness */
+      @media screen and (min-width: 120px) and (max-width: 549px) {
+        body {
+          background-image: url(Professional\ High\ Five.jpeg);
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 10px;
+          padding: 20px 10px;
+          background-size: cover;
+        }
+        .contact-segement {
+          background-color: #80808027;
+          margin: 0 auto;
+          align-items: center;
+          box-shadow: 0px 2px 7px 5px #fff;
+          padding: 10px;
+          width: fit-content;
+        }
+        .contact-segement span:nth-child(1) {
+          display: flex;
+          gap: 5px;
+          justify-content: center;
+          padding: 10px;
+          font-size: 2em;
+          font-weight: bold;
+        }
+        .contact-segement span:nth-child(2) {
+          text-align: center;
+        }
+        .contact-segement span .grey {
+          color: #fff;
+          font-weight: 600;
+          backdrop-filter: blur(10px);
+        }
+
+        form,
+        form span {
+          display: flex;
+          flex-direction: column;
+          padding: 10px;
+          gap: 10px;
+        }
+
+        form input,
+        textarea {
+          padding: 10px;
+          border-radius: 5px;
+          resize: vertical;
+          border: none;
+          border: 2px solid #000;
+          outline: none;
+        }
+
+        form button {
+          width: fit-content;
+          padding: 5px 20px;
+          background-color: #495;
+          color: #fff;
+          border-radius: 4px;
+          margin: 0 auto;
+          border: none;
+        }
+        form button:hover {
+          background-color: #25a73f;
+          cursor: pointer;
+        }
+        .feedback-img {
+          display: none;
+        }
+      }
+
+      /* TABLET RESPONSIVENESS */
+      @media screen and (min-width: 550px) {
+        .contact-segement {
+          padding: 50px 20px;
+          display: flex;
+          width: 45rem;
+          border: 2px inset black;
+          overflow: hidden;
+          border-radius: 10px;
+          box-shadow: 0px 2px 7px 5px grey;
+          height: 35rem;
+        }
+        .contact-segement span:nth-child(1) {
+          display: flex;
+          gap: 5px;
+          font-size: 2em;
+          text-align: center;
+          font-weight: bold;
+          justify-content: center;
+        }
+        .contact-segement span:nth-child(2) {
+          display: flex;
+          flex-direction: column;
+          line-height: 10px;
+          align-items: center;
+          margin-left: 20px;
+        }
+        .contact-segement span:nth-child(2) .grey {
+          color: grey;
+          font-size: small;
+          letter-spacing: 2px;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+          padding: 15px;
+          gap: 20px;
+        }
+        form input,
+        textarea {
+          padding: 15px;
+          resize: vertical;
+          border-radius: 5px;
+          border: none;
+          outline: none;
+          border: 1px solid grey;
+        }
+        form button {
+          width: fit-content;
+          padding: 10px 30px;
+          background-color: #495;
+          color: #fff;
+          border-radius: 4px;
+          margin: 0 auto;
+        }
+        form button:hover {
+          background-color: #25a73f;
+          cursor: pointer;
+        }
+        form button:active {
+          background-color: #0e9229;
+          cursor: pointer;
+        }
+        .feedback-img {
+          width: 10rem;
+          height: 100%;
+          padding: 10px;
+          display: flex;
+        }
+      }
+
+      @media screen and (min-width: 835px) {
+        .contact-segement {
+          padding: 50px 20px;
+          display: flex;
+          width: 55rem;
+          border: 2px inset black;
+          overflow: hidden;
+          border-radius: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- section2-contact-segement -->
+    <section class="contact-segement">
+      <div class="sec1">
+        <span>
+          <!-- <p>Home /</p> -->
+          <p>Contact</p>
+        </span>
+
+        <span>
+          <h2>Let's talk about your problem</h2>
+          <p class="grey">
+            Drop us a line through the form and we'll get back to you !!
+          </p>
+        </span>
+
+        <!-- contact-form -->
+        <form action="#">
+          <input type="text" id="fullName" placeholder="First name" required />
+          <input type="text" id="fullName" placeholder="Last name" required />
+          <input
+            type="email"
+            id="email_id"
+            name="email"
+            placeholder="Email Address *"
+            required
+          />
+          <textarea
+            id="message"
+            class="textarea"
+            cols="20"
+            rows="3"
+            placeholder="Please tell us your problem ?*"
+            required
+          ></textarea>
+          <button onclick="sendEmail()">Send</button>
+        </form>
+      </div>
+
+      <div class="sec2">
+        <figure class="feedback-img">
+          <img src="/assets/images/contact.jpg" alt="feedback" />
+        </figure>
+      </div>
+    </section>
+    <script>
+      function sendEmail() {
+        let parms = {
+          from_name: document.getElementById("fullName").value,
+          email_id: document.getElementById("email_id").value,
+          message: document.getElementById("message").value,
+        };
+
+        emailjs
+          .send("service_1yl761q", "template_yyb9pal", parms)
+          .then(alert("Message sent successfully!"), function (error) {
+            alert("Failed to send message, please try again later.");
+          });
+      }
+    </script>
+  </body>
+</html>
